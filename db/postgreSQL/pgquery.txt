@@ -1,0 +1,7 @@
+SELECT * FROM reservations where RESERVATIONS.LOCATION_ID = 999999;
+
+INSERT INTO locations (location_id, location_address, rate, review_avg, total_review, service_fee, occupancy_tax) VALUES (10000001, '1234 Howdoyou, Autoincrement', 30, 1.49, 190, 6, 5);
+
+INSERT INTO users (username, email) VALUES ('Please_help', 'testinginsert@cqlsh.com');
+
+INSERT INTO reservations (reservation_id, checkin_date, checkout_date, adults, children, infants, price, location_id, user_id) VALUES (65103518, '2020-06-07', '2020-06-10', 2, 0, 0, 1804, (SELECT location_id from locations WHERE location_id = 10000001), (SELECT user_id from users WHERE user_id = 65109763));

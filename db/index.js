@@ -1,20 +1,18 @@
-const mysql = require('mysql');
+const Pool = require('pg').Pool;
 
-const connection = mysql.createConnection({
-  // host: '172.17.0.4',
-  // port: '3306',
-  user: 'root',
-  password: '123', // TODO! Fill in password to your personal mysql password
-  //alternate password for dockerized is 'something'
-  database: 'relaxly',
+const pool = new Pool({
+  user: 'ohjeezz',
+  host: 'localhost',
+  database: 'relaxly_pj3',
+  password: '',
+  port: 5432,
 });
 
-connection.connect();
-// connection.query('SELECT 1 +1 AS solution', (error, results) => {
-//   if (error) {
-//     throw error;
-//   }
-//   console.log('The solution is: ', results[0].solution);
-// });
+pool.query('SELECT 1 + 1 AS solution', (err, res) => {
+  if (err) {
+    console.log(err);
+  }
+  console.log('hi its pg13 and ITS CONNECTED PROBABLY HOPEFULLY MAYBE');
+});
 
-module.exports = connection;
+module.exports = pool;
